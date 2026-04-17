@@ -12,333 +12,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #faf8f4;
-  --bg2: #f2efe8;
-  --bg3: #e8e3d8;
-  --text: #1a1714;
-  --text2: #5a5248;
-  --text3: #8c8278;
-  --accent: #8B4513;
-  --accent2: #c4703a;
-  --accent3: #e8c49a;
-  --border: rgba(139,69,19,0.15);
-  --border2: rgba(139,69,19,0.25);
-  --sidebar-w: 300px;
-  --header-h: 56px;
-  --radius: 10px;
+  --bg: #faf8f4; --bg2: #f2efe8; --bg3: #e8e3d8;
+  --text: #1a1714; --text2: #5a5248; --text3: #8c8278;
+  --accent: #8B4513; --accent2: #c4703a; --accent3: #e8c49a;
+  --border: rgba(139,69,19,0.15); --border2: rgba(139,69,19,0.25);
+  --sidebar-w: 300px; --header-h: 56px; --radius: 10px;
   --shadow: 0 2px 16px rgba(0,0,0,0.08);
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1a1714;
-    --bg2: #231f1a;
-    --bg3: #2e2820;
-    --text: #f2ede4;
-    --text2: #c4b9a8;
-    --text3: #8c7f70;
-    --accent: #d4884a;
-    --accent2: #e8a870;
-    --accent3: #6b3e1e;
-    --border: rgba(212,136,74,0.15);
-    --border2: rgba(212,136,74,0.28);
+    --bg: #1a1714; --bg2: #231f1a; --bg3: #2e2820;
+    --text: #f2ede4; --text2: #c4b9a8; --text3: #8c7f70;
+    --accent: #d4884a; --accent2: #e8a870; --accent3: #6b3e1e;
+    --border: rgba(212,136,74,0.15); --border2: rgba(212,136,74,0.28);
   }
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-html, body {
-  height: 100%;
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow: hidden;
-}
-
-/* ── APP SHELL ── */
+html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; }
 #app { display: flex; height: 100dvh; }
-
-/* ── SIDEBAR ── */
-#sidebar {
-  width: var(--sidebar-w);
-  background: var(--bg2);
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  overflow: hidden;
-  transition: transform 0.28s cubic-bezier(.4,0,.2,1);
-  z-index: 20;
-}
-
-#sidebar-head {
-  padding: 20px 18px 14px;
-  background: var(--accent);
-  background: linear-gradient(135deg, #6b2d0e 0%, var(--accent) 60%, var(--accent2) 100%);
-  position: relative;
-  overflow: hidden;
-}
-#sidebar-head::before {
-  content: 'א';
-  position: absolute;
-  right: 10px;
-  top: -8px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 72px;
-  color: rgba(255,255,255,0.08);
-  pointer-events: none;
-  line-height: 1;
-}
-#sidebar-head h1 {
-  font-family: 'Crimson Pro', serif;
-  font-size: 21px;
-  font-weight: 400;
-  color: #fff;
-  letter-spacing: 0.01em;
-  line-height: 1.25;
-}
-#sidebar-head .sub {
-  font-size: 11.5px;
-  color: rgba(255,255,255,0.65);
-  margin-top: 3px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-#search-wrap {
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
-}
-#search {
-  width: 100%;
-  padding: 8px 12px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  background: var(--bg);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius);
-  color: var(--text);
-  outline: none;
-  transition: border-color .15s;
-}
+#sidebar { width: var(--sidebar-w); background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden; transition: transform 0.28s cubic-bezier(.4,0,.2,1); z-index: 20; }
+#sidebar-head { padding: 20px 18px 14px; background: linear-gradient(135deg, #6b2d0e 0%, var(--accent) 60%, var(--accent2) 100%); position: relative; overflow: hidden; }
+#sidebar-head::before { content: 'א'; position: absolute; right: 10px; top: -8px; font-family: 'Crimson Pro', serif; font-size: 72px; color: rgba(255,255,255,0.08); pointer-events: none; line-height: 1; }
+#sidebar-head h1 { font-family: 'Crimson Pro', serif; font-size: 21px; font-weight: 400; color: #fff; letter-spacing: 0.01em; line-height: 1.25; }
+#sidebar-head .sub { font-size: 11.5px; color: rgba(255,255,255,0.65); margin-top: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
+#search-wrap { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+#search { width: 100%; padding: 8px 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius); color: var(--text); outline: none; transition: border-color .15s; }
 #search::placeholder { color: var(--text3); }
 #search:focus { border-color: var(--accent); }
-
-#cats {
-  display: flex;
-  gap: 5px;
-  padding: 8px 12px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--border);
-}
-.cat {
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--border2);
-  background: transparent;
-  cursor: pointer;
-  color: var(--text3);
-  font-family: 'DM Sans', sans-serif;
-  transition: all .15s;
-  white-space: nowrap;
-}
+#cats { display: flex; gap: 5px; padding: 8px 12px; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+.cat { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; cursor: pointer; color: var(--text3); font-family: 'DM Sans', sans-serif; transition: all .15s; white-space: nowrap; }
 .cat:active { transform: scale(0.95); }
-.cat.on {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
+.cat.on { background: var(--accent); color: #fff; border-color: var(--accent); }
 #count { font-size: 11px; color: var(--text3); padding: 5px 14px; text-align: right; }
-
 #list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 #list::-webkit-scrollbar { width: 3px; }
 #list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-
-.section-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text3);
-  padding: 10px 14px 4px;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 14px;
-  cursor: pointer;
-  border-left: 3px solid transparent;
-  transition: background .12s, border-color .12s;
-}
+.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); padding: 10px 14px 4px; }
+.item { display: flex; align-items: center; gap: 10px; padding: 9px 14px; cursor: pointer; border-left: 3px solid transparent; transition: background .12s, border-color .12s; }
 .item:active { background: var(--bg3); }
 .item:hover { background: var(--bg3); }
-.item.on {
-  background: linear-gradient(90deg, rgba(139,69,19,0.12), transparent);
-  border-left-color: var(--accent);
-}
-.item-ico {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-  border: 1px solid var(--border);
-  background: var(--bg);
-}
+.item.on { background: linear-gradient(90deg, rgba(139,69,19,0.12), transparent); border-left-color: var(--accent); }
+.item-ico { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; border: 1px solid var(--border); background: var(--bg); }
 .item-info { flex: 1; min-width: 0; }
-.item-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.item-name { font-size: 13px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .item.on .item-name { color: var(--accent); }
-.item-desc {
-  font-size: 11px;
-  color: var(--text3);
-  margin-top: 1px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.item-arrow {
-  font-size: 10px;
-  color: var(--text3);
-  opacity: 0;
-  transition: opacity .15s;
-}
+.item-desc { font-size: 11px; color: var(--text3); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.item-arrow { font-size: 10px; color: var(--text3); opacity: 0; transition: opacity .15s; }
 .item:hover .item-arrow, .item.on .item-arrow { opacity: 1; }
-
-/* ── MAIN ── */
 #main { flex: 1; display: flex; flex-direction: column; min-width: 0; background: var(--bg); }
-
-#topbar {
-  height: var(--header-h);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 14px;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-#menu-btn {
-  display: none;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: 1px solid var(--border2);
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--text);
-  font-size: 16px;
-  flex-shrink: 0;
-}
-#topbar-title {
-  flex: 1;
-  font-family: 'Crimson Pro', serif;
-  font-size: 17px;
-  font-weight: 400;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.top-btn {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  padding: 6px 13px;
-  border: 1px solid var(--border2);
-  border-radius: 8px;
-  background: transparent;
-  cursor: pointer;
-  color: var(--text2);
-  white-space: nowrap;
-  transition: all .15s;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
+#topbar { height: var(--header-h); display: flex; align-items: center; gap: 8px; padding: 0 14px; background: var(--bg2); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+#menu-btn { display: none; width: 36px; height: 36px; align-items: center; justify-content: center; background: none; border: 1px solid var(--border2); border-radius: 8px; cursor: pointer; color: var(--text); font-size: 16px; flex-shrink: 0; }
+#topbar-title { flex: 1; font-family: 'Crimson Pro', serif; font-size: 17px; font-weight: 400; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.top-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; padding: 6px 13px; border: 1px solid var(--border2); border-radius: 8px; background: transparent; cursor: pointer; color: var(--text2); white-space: nowrap; transition: all .15s; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
 .top-btn:hover { background: var(--bg3); border-color: var(--accent); color: var(--accent); }
 .top-btn:active { transform: scale(0.97); }
 #open-btn { display: none; }
-
 #frame-area { flex: 1; position: relative; overflow: hidden; }
-
-#placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  background: var(--bg);
-}
-.ph-letter {
-  font-family: 'Crimson Pro', serif;
-  font-size: 96px;
-  color: var(--accent3);
-  line-height: 1;
-  opacity: 0.5;
-}
-.ph-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 18px;
-  color: var(--text3);
-  text-align: center;
-  max-width: 260px;
-  line-height: 1.5;
-  font-style: italic;
-}
-.ph-hint {
-  font-size: 12px;
-  color: var(--text3);
-  background: var(--bg2);
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-}
-
-#viewer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: none;
-  background: #fff;
-}
-
-/* overlay for mobile */
-#overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 15;
-}
-
-/* ── MOBILE ── */
+#placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: var(--bg); }
+.ph-letter { font-family: 'Crimson Pro', serif; font-size: 96px; color: var(--accent3); line-height: 1; opacity: 0.5; }
+.ph-text { font-family: 'Crimson Pro', serif; font-size: 18px; color: var(--text3); text-align: center; max-width: 260px; line-height: 1.5; font-style: italic; }
+.ph-hint { font-size: 12px; color: var(--text3); background: var(--bg2); padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); }
+#viewer { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: none; background: #fff; }
+#overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 15; }
 @media (max-width: 768px) {
-  #sidebar {
-    position: fixed;
-    left: 0; top: 0; bottom: 0;
-    transform: translateX(-100%);
-    box-shadow: 4px 0 24px rgba(0,0,0,0.2);
-  }
+  #sidebar { position: fixed; left: 0; top: 0; bottom: 0; transform: translateX(-100%); box-shadow: 4px 0 24px rgba(0,0,0,0.2); }
   #sidebar.open { transform: translateX(0); }
   #overlay.open { display: block; }
   #menu-btn { display: flex; }
@@ -347,20 +84,16 @@ html, body {
 </style>
 </head>
 <body>
-
 <div id="overlay" onclick="closeSidebar()"></div>
-
 <div id="app">
   <nav id="sidebar" aria-label="Sommaire des ressources">
     <div id="sidebar-head">
       <h1>📚 Hébreu<br>Moty31700</h1>
       <p class="sub">28 ressources pédagogiques</p>
     </div>
-
     <div id="search-wrap">
-      <input id="search" type="search" placeholder="🔍  Rechercher..." autocomplete="off" oninput="render()">
+      <input id="search" type="search" placeholder="🔍 Rechercher..." autocomplete="off" oninput="render()">
     </div>
-
     <div id="cats">
       <button class="cat on" onclick="setCat('all',this)">Tout</button>
       <button class="cat" onclick="setCat('cours',this)">Cours</button>
@@ -369,11 +102,9 @@ html, body {
       <button class="cat" onclick="setCat('poemes',this)">Poèmes</button>
       <button class="cat" onclick="setCat('autres',this)">Autres</button>
     </div>
-
     <div id="count"></div>
     <div id="list" role="list"></div>
   </nav>
-
   <div id="main">
     <header id="topbar">
       <button id="menu-btn" onclick="toggleSidebar()" aria-label="Menu">☰</button>
@@ -381,7 +112,6 @@ html, body {
       <a id="open-btn" class="top-btn" href="#" target="_blank" rel="noopener">Ouvrir ↗</a>
       <button class="top-btn" onclick="reload()">↻</button>
     </header>
-
     <div id="frame-area">
       <div id="placeholder">
         <div class="ph-letter">א</div>
@@ -396,34 +126,34 @@ html, body {
 
 <script>
 const DATA = [
-  {name:"Livre Hébreu 1",       desc:"Ouvrage principal",            url:"https://moty31700.github.io/Livre_hebr_1/",           cat:"livres",  ico:"📗"},
-  {name:"Cours A1 révisé",      desc:"Jeu A1 version 3",             url:"https://moty31700.github.io/jeu_A1_v3.html/",         cat:"cours",   ico:"🎓"},
-  {name:"18 Phrases A1",        desc:"Jeu hébreu A1",                url:"https://moty31700.github.io/jeu-hebreu-a1/",          cat:"jeux",    ico:"🎮"},
-  {name:"Textes + Vocabulaire", desc:"Hébreu B22",                   url:"https://moty31700.github.io/hebreu-b22/",             cat:"cours",   ico:"📝"},
-  {name:"Portail Hébreu",       desc:"Économie",                     url:"https://moty31700.github.io/hebreu-portail/",         cat:"autres",  ico:"🌐"},
-  {name:"Économie & Finances",  desc:"Ressource économie",           url:"https://moty31700.github.io/Economie-finances/",      cat:"autres",  ico:"💹"},
-  {name:"Cours A1 Complet",     desc:"Fiche A1 complète",            url:"https://moty31700.github.io/jeu_A1_fiche.html/",      cat:"cours",   ico:"📋"},
-  {name:"A1 Version 2",         desc:"Fiche 18 — Révision A1",       url:"https://moty31700.github.io/A1_version2/",            cat:"cours",   ico:"📋"},
-  {name:"Rachi grammairien",    desc:"Jeu complet Rachi",            url:"https://moty31700.github.io/jeu_complet_Rachi/",      cat:"jeux",    ico:"🎮"},
-  {name:"Article Laszlo",       desc:"Article Yediot",               url:"https://moty31700.github.io/LASZLO/",                 cat:"autres",  ico:"📰"},
-  {name:"Quiz Laszlo",          desc:"Analyseur de jeux",            url:"https://moty31700.github.io/Quiz_Laszlo/",            cat:"jeux",    ico:"🧩"},
-  {name:"Vocabulaire Rachi",    desc:"Jeu de vocabulaire",           url:"https://moty31700.github.io/Jeu_vocab_rachi/",        cat:"jeux",    ico:"🎮"},
-  {name:"Poème Gan Youl",       desc:"Texte poétique",               url:"https://moty31700.github.io/-/",                     cat:"poemes",  ico:"🌿"},
-  {name:"Poème Gan Nayoul",     desc:"Texte poétique",               url:"https://moty31700.github.io/Gan_Nayoul/",            cat:"poemes",  ico:"🌿"},
-  {name:"Vocabulaire A1",       desc:"Vocabulaire & exercices A1",   url:"https://moty31700.github.io/jeu_A1_complet/",        cat:"cours",   ico:"📚"},
-  {name:"Vocabulaire A2",       desc:"Vocabulaire & exercices A2",   url:"https://moty31700.github.io/jeu_A2_complet/",        cat:"cours",   ico:"📚"},
-  {name:"Livre Débutants",      desc:"Ouvrage pour débutants",       url:"https://moty31700.github.io/Livre_-_1/",             cat:"livres",  ico:"📗"},
-  {name:"Livre Hébreu Deb.",    desc:"Construction sur livre",       url:"https://moty31700.github.io/livre_hebreu_Deb/",      cat:"livres",  ico:"📗"},
-  {name:"Fiche A2",             desc:"En construction",              url:"https://moty31700.github.io/jeu_A2.html/",           cat:"cours",   ico:"🔧"},
-  {name:"Fiches Hébreu B2",     desc:"Niveau avancé",                url:"https://moty31700.github.io/fiches-hebreu-b2/",      cat:"cours",   ico:"📋"},
-  {name:"Shir HaShayara",       desc:"Chanson",                      url:"https://moty31700.github.io/shir_hashayara/",        cat:"poemes",  ico:"🎵"},
-  {name:"Assets & Icônes",      desc:"Ressources graphiques",        url:"https://moty31700.github.io/assets/",               cat:"autres",  ico:"🗂️"},
-  {name:"Morphologie",          desc:"Hébreu morphologie",           url:"https://moty31700.github.io/hebreu-morphologie/",    cat:"cours",   ico:"🔬"},
-  {name:"Examen type",          desc:"Modèle examen semestriel",     url:"https://moty31700.github.io/Hebreu-Examen-type/",   cat:"cours",   ico:"📝"},
-  {name:"Fiche Masken",         desc:"Fiche pédagogique",            url:"https://moty31700.github.io/fiche-masken/",          cat:"cours",   ico:"📋"},
-  {name:"Targoum Mishpatim",    desc:"Tous les modèles JS",          url:"https://moty31700.github.io/targoum-mishpatim/",     cat:"autres",  ico:"⚙️"},
-  {name:"Hébreu — Accueil",     desc:"Page principale",              url:"https://moty31700.github.io/Hebreu/",               cat:"autres",  ico:"🏠"},
-  {name:"GitHub Moty31700",     desc:"Tous les dépôts",              url:"https://github.com/Moty31700",                       cat:"autres",  ico:"💻"},
+  {name:"Livre Hébreu 1",       desc:"Ouvrage principal",           url:"https://moty31700.github.io/Livre_hebr_1/",           cat:"livres",  ico:"📗"},
+  {name:"Cours A1 révisé",      desc:"Jeu A1 version 3",            url:"https://moty31700.github.io/jeu_A1_v3.html",          cat:"cours",   ico:"🎓"},
+  {name:"18 Phrases A1",        desc:"Jeu hébreu A1",               url:"https://moty31700.github.io/jeu-hebreu-a1/",          cat:"jeux",    ico:"🎮"},
+  {name:"Textes + Vocabulaire", desc:"Hébreu B22",                  url:"https://moty31700.github.io/hebreu-b22/",             cat:"cours",   ico:"📝"},
+  {name:"Portail Hébreu",       desc:"Économie",                    url:"https://moty31700.github.io/hebreu-portail/",         cat:"autres",  ico:"🌐"},
+  {name:"Économie & Finances",  desc:"Ressource économie",          url:"https://moty31700.github.io/Economie-finances/",      cat:"autres",  ico:"💹"},
+  {name:"Cours A1 Complet",     desc:"Fiche A1 complète",           url:"https://moty31700.github.io/jeu_A1_fiche.html",       cat:"cours",   ico:"📋"},
+  {name:"A1 Version 2",         desc:"Fiche 18 — Révision A1",      url:"https://moty31700.github.io/A1_version2/",            cat:"cours",   ico:"📋"},
+  {name:"Rachi grammairien",    desc:"Jeu complet Rachi",           url:"https://moty31700.github.io/jeu_complet_Rachi/",      cat:"jeux",    ico:"🎮"},
+  {name:"Article Laszlo",       desc:"Article Yediot",              url:"https://moty31700.github.io/LASZLO/",                 cat:"autres",  ico:"📰"},
+  {name:"Quiz Laszlo",          desc:"Analyseur de jeux",           url:"https://moty31700.github.io/Quiz_Laszlo/",            cat:"jeux",    ico:"🧩"},
+  {name:"Vocabulaire Rachi",    desc:"Jeu de vocabulaire",          url:"https://moty31700.github.io/Jeu_vocab_rachi/",        cat:"jeux",    ico:"🎮"},
+  {name:"Poème Gan Youl",       desc:"Texte poétique",              url:"https://moty31700.github.io/Gan_Youl/",               cat:"poemes",  ico:"🌿"},
+  {name:"Poème Gan Nayoul",     desc:"Texte poétique",              url:"https://moty31700.github.io/Gan_Nayoul/",             cat:"poemes",  ico:"🌿"},
+  {name:"Vocabulaire A1",       desc:"Vocabulaire & exercices A1",  url:"https://moty31700.github.io/jeu_A1_complet/",         cat:"cours",   ico:"📚"},
+  {name:"Vocabulaire A2",       desc:"Vocabulaire & exercices A2",  url:"https://moty31700.github.io/jeu_A2_complet/",         cat:"cours",   ico:"📚"},
+  {name:"Livre Débutants",      desc:"Ouvrage pour débutants",      url:"https://moty31700.github.io/Livre_-_1/",              cat:"livres",  ico:"📗"},
+  {name:"Livre Hébreu Deb.",    desc:"Construction sur livre",      url:"https://moty31700.github.io/livre_hebreu_Deb/",       cat:"livres",  ico:"📗"},
+  {name:"Fiche A2",             desc:"En construction",             url:"https://moty31700.github.io/jeu_A2.html",             cat:"cours",   ico:"🔧"},
+  {name:"Fiches Hébreu B2",     desc:"Niveau avancé",               url:"https://moty31700.github.io/fiches-hebreu-b2/",       cat:"cours",   ico:"📋"},
+  {name:"Shir HaShayara",       desc:"Chanson",                     url:"https://moty31700.github.io/shir_hashayara/",         cat:"poemes",  ico:"🎵"},
+  {name:"Assets & Icônes",      desc:"Ressources graphiques",       url:"https://moty31700.github.io/assets/",                 cat:"autres",  ico:"🗂️"},
+  {name:"Morphologie",          desc:"Hébreu morphologie",          url:"https://moty31700.github.io/hebreu-morphologie/",     cat:"cours",   ico:"🔬"},
+  {name:"Examen type",          desc:"Modèle examen semestriel",    url:"https://moty31700.github.io/Hebreu-Examen-type/",     cat:"cours",   ico:"📝"},
+  {name:"Fiche Masken",         desc:"Fiche pédagogique",           url:"https://moty31700.github.io/fiche-masken/",           cat:"cours",   ico:"📋"},
+  {name:"Targoum Mishpatim",    desc:"Tous les modèles JS",         url:"https://moty31700.github.io/targoum-mishpatim/",      cat:"autres",  ico:"⚙️"},
+  {name:"Hébreu — Accueil",     desc:"Page principale",             url:"https://moty31700.github.io/Hebreu/",                 cat:"autres",  ico:"🏠"},
+  {name:"GitHub Moty31700",     desc:"Tous les dépôts",             url:"https://github.com/Moty31700",                        cat:"autres",  ico:"💻"},
 ];
 
 let cat = 'all', sel = -1;
@@ -441,8 +171,8 @@ function render() {
   const list = document.getElementById('list');
   document.getElementById('count').textContent = items.length + ' ressource' + (items.length > 1 ? 's' : '');
   list.innerHTML = items.map(r => `
-    <div class="item${r.i === sel ? ' on' : ''}" onclick="open(${r.i})" role="listitem" tabindex="0"
-         onkeydown="if(event.key==='Enter')open(${r.i})">
+    <div class="item${r.i === sel ? ' on' : ''}" onclick="openRes(${r.i})" role="listitem" tabindex="0"
+      onkeydown="if(event.key==='Enter')openRes(${r.i})">
       <div class="item-ico">${r.ico}</div>
       <div class="item-info">
         <div class="item-name">${r.name}</div>
@@ -452,7 +182,7 @@ function render() {
     </div>`).join('');
 }
 
-function open(i) {
+function openRes(i) {
   sel = i;
   const r = DATA[i];
   document.getElementById('placeholder').style.display = 'none';
@@ -483,6 +213,7 @@ function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('open');
 }
+
 function closeSidebar() {
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
