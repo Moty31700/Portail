@@ -47,7 +47,6 @@ html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(-
 #list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 #list::-webkit-scrollbar { width: 3px; }
 #list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); padding: 10px 14px 4px; }
 .item { display: flex; align-items: center; gap: 10px; padding: 9px 14px; cursor: pointer; border-left: 3px solid transparent; transition: background .12s, border-color .12s; }
 .item:active { background: var(--bg3); }
 .item:hover { background: var(--bg3); }
@@ -90,7 +89,7 @@ html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(-
   <nav id="sidebar" aria-label="Sommaire des ressources">
     <div id="sidebar-head">
       <h1>📚 Hébreu<br>Moty31700</h1>
-      <p class="sub" id="head-count">28 ressources pédagogiques</p>
+      <p class="sub">28 ressources pédagogiques</p>
     </div>
     <div id="search-wrap">
       <input id="search" type="search" placeholder="🔍 Rechercher..." autocomplete="off" oninput="render()">
@@ -127,42 +126,43 @@ html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(-
 
 <script>
 const DATA = [
-  {name:"Ktabam",               desc:"Texte poétique",              url:"https://moty31700.github.io/Ktabam/",                     cat:"poemes",  ico:"🌿"},
-  {name:"Rashi",                desc:"Cours Rashi",                 url:"https://moty31700.github.io/Rashi-/",                     cat:"cours",   ico:"🎓"},
-  {name:"Cours A1 Complet",     desc:"Fiche A1 complète",           url:"https://moty31700.github.io/jeu_A1_fiche.html/",           cat:"cours",   ico:"📋"},
-  {name:"18 Phrases A1",        desc:"Jeu hébreu A1",               url:"https://moty31700.github.io/jeu-hebreu-a1/",              cat:"jeux",    ico:"🎮"},
-  {name:"Textes + Vocabulaire", desc:"Hébreu B22",                  url:"https://moty31700.github.io/hebreu-b22/",                 cat:"cours",   ico:"📝"},
-  {name:"Portail Hébreu",       desc:"Économie",                    url:"https://moty31700.github.io/hebreu-portail/",             cat:"autres",  ico:"🌐"},
-  {name:"Économie & Finances",  desc:"Ressource économie",          url:"https://moty31700.github.io/Economie-finances/",          cat:"autres",  ico:"💹"},
-  {name:"Rachi grammairien",    desc:"Jeu complet Rachi",           url:"https://moty31700.github.io/jeu_complet_Rachi/",          cat:"jeux",    ico:"🎮"},
-  {name:"Article Laszlo",       desc:"Article Yediot",              url:"https://moty31700.github.io/LASZLO/",                     cat:"autres",  ico:"📰"},
-  {name:"Quiz Laszlo",          desc:"Analyseur de jeux",           url:"https://moty31700.github.io/Quiz_Laszlo/",                cat:"jeux",    ico:"🧩"},
-  {name:"Vocabulaire Rachi",    desc:"Jeu de vocabulaire",          url:"https://moty31700.github.io/Jeu_vocab_rachi/",            cat:"jeux",    ico:"🎮"},
-  {name:"Poème Gan Nayoul",     desc:"Texte poétique",              url:"https://moty31700.github.io/Gan_Nayoul/",                 cat:"poemes",  ico:"🌿"},
-  {name:"Vocabulaire A1",       desc:"Vocabulaire & exercices A1",  url:"https://moty31700.github.io/jeu_A1_complet/",             cat:"cours",   ico:"📚"},
-  {name:"Vocabulaire A2",       desc:"Vocabulaire & exercices A2",  url:"https://moty31700.github.io/jeu_A2_complet/",             cat:"cours",   ico:"📚"},
-  {name:"Livre Débutants",      desc:"Ouvrage pour débutants",      url:"https://moty31700.github.io/Livre_-_1/",                  cat:"livres",  ico:"📗"},
-  {name:"Livre Hébreu Deb.",    desc:"Construction sur livre",      url:"https://moty31700.github.io/livre_hebreu_Deb/",           cat:"livres",  ico:"📗"},
-  {name:"Fiche A2",             desc:"En construction",             url:"https://moty31700.github.io/jeu_A2.html",                 cat:"cours",   ico:"🔧"},
-  {name:"Fiches Hébreu B2",     desc:"Niveau avancé",               url:"https://moty31700.github.io/fiches-hebreu-b2/",           cat:"cours",   ico:"📋"},
-  {name:"Shir HaShayara",       desc:"Chanson",                     url:"https://moty31700.github.io/shir_hashayara/",             cat:"poemes",  ico:"🎵"},
-  {name:"Morphologie",          desc:"Hébreu morphologie",          url:"https://moty31700.github.io/hebreu-morphologie/",         cat:"cours",   ico:"🔬"},
-  {name:"Examen type",          desc:"Modèle examen semestriel",    url:"https://moty31700.github.io/Hebreu-Examen-type/",         cat:"cours",   ico:"📝"},
-  {name:"Fiche Masken",         desc:"Fiche pédagogique",           url:"https://moty31700.github.io/fiche-masken/",               cat:"cours",   ico:"📋"},
-  {name:"Targoum Mishpatim",    desc:"Tous les modèles JS",         url:"https://moty31700.github.io/targoum-mishpatim/",          cat:"autres",  ico:"⚙️"},
-  {name:"Drill Hébreu",         desc:"Exercices drill",             url:"https://moty31700.github.io/Hebreu-drill/",               cat:"autres",  ico:"🔁"},
-  {name:"Hébreu — Accueil",     desc:"Page principale",             url:"https://moty31700.github.io/Hebreu/",                     cat:"autres",  ico:"🏠"},
-  // ── Nouveaux jeux ──────────────────────────────────────────────────────────
-  {name:"עברית — Jeu bilingue", desc:"Jeu de vocabulaire hébreu",   url:"https://moty31700.github.io/heb_game_v2/",                cat:"jeux",    ico:"🔤", isNew:true},
-  {name:"עברית — 120 Mots",     desc:"120 mots · Jeu bilingue",     url:"https://moty31700.github.io/jeu_hebreu_120mots/",          cat:"jeux",    ico:"💬", isNew:true},
-  {name:"ISRIM — משחק עברית",   desc:"Jeu hébreu ISRIM",            url:"https://moty31700.github.io/isrim_jeu_hebreu/",            cat:"jeux",    ico:"✡️", isNew:true},
+  // ── 25 ressources originales ───────────────────────────────────────────────
+  {name:"Ktabam",               desc:"Texte poétique",             url:"https://moty31700.github.io/Ktabam/",               cat:"poemes", ico:"🌿"},
+  {name:"Rashi",                desc:"Cours Rashi",                url:"https://moty31700.github.io/Rashi-/",               cat:"cours",  ico:"🎓"},
+  {name:"Cours A1 Complet",     desc:"Fiche A1 complète",          url:"https://moty31700.github.io/jeu_A1_fiche.html/",    cat:"cours",  ico:"📋"},
+  {name:"18 Phrases A1",        desc:"Jeu hébreu A1",              url:"https://moty31700.github.io/jeu-hebreu-a1/",        cat:"jeux",   ico:"🎮"},
+  {name:"Textes + Vocabulaire", desc:"Hébreu B22",                 url:"https://moty31700.github.io/hebreu-b22/",           cat:"cours",  ico:"📝"},
+  {name:"Portail Hébreu",       desc:"Économie",                   url:"https://moty31700.github.io/hebreu-portail/",       cat:"autres", ico:"🌐"},
+  {name:"Économie & Finances",  desc:"Ressource économie",         url:"https://moty31700.github.io/Economie-finances/",    cat:"autres", ico:"💹"},
+  {name:"Rachi grammairien",    desc:"Jeu complet Rachi",          url:"https://moty31700.github.io/jeu_complet_Rachi/",    cat:"jeux",   ico:"🎮"},
+  {name:"Article Laszlo",       desc:"Article Yediot",             url:"https://moty31700.github.io/LASZLO/",               cat:"autres", ico:"📰"},
+  {name:"Quiz Laszlo",          desc:"Analyseur de jeux",          url:"https://moty31700.github.io/Quiz_Laszlo/",          cat:"jeux",   ico:"🧩"},
+  {name:"Vocabulaire Rachi",    desc:"Jeu de vocabulaire",         url:"https://moty31700.github.io/Jeu_vocab_rachi/",      cat:"jeux",   ico:"🎮"},
+  {name:"Poème Gan Nayoul",     desc:"Texte poétique",             url:"https://moty31700.github.io/Gan_Nayoul/",           cat:"poemes", ico:"🌿"},
+  {name:"Vocabulaire A1",       desc:"Vocabulaire & exercices A1", url:"https://moty31700.github.io/jeu_A1_complet/",       cat:"cours",  ico:"📚"},
+  {name:"Vocabulaire A2",       desc:"Vocabulaire & exercices A2", url:"https://moty31700.github.io/jeu_A2_complet/",       cat:"cours",  ico:"📚"},
+  {name:"Livre Débutants",      desc:"Ouvrage pour débutants",     url:"https://moty31700.github.io/Livre_-_1/",            cat:"livres", ico:"📗"},
+  {name:"Livre Hébreu Deb.",    desc:"Construction sur livre",     url:"https://moty31700.github.io/livre_hebreu_Deb/",     cat:"livres", ico:"📗"},
+  {name:"Fiche A2",             desc:"En construction",            url:"https://moty31700.github.io/jeu_A2.html",           cat:"cours",  ico:"🔧"},
+  {name:"Fiches Hébreu B2",     desc:"Niveau avancé",              url:"https://moty31700.github.io/fiches-hebreu-b2/",     cat:"cours",  ico:"📋"},
+  {name:"Shir HaShayara",       desc:"Chanson",                    url:"https://moty31700.github.io/shir_hashayara/",       cat:"poemes", ico:"🎵"},
+  {name:"Morphologie",          desc:"Hébreu morphologie",         url:"https://moty31700.github.io/hebreu-morphologie/",   cat:"cours",  ico:"🔬"},
+  {name:"Examen type",          desc:"Modèle examen semestriel",   url:"https://moty31700.github.io/Hebreu-Examen-type/",   cat:"cours",  ico:"📝"},
+  {name:"Fiche Masken",         desc:"Fiche pédagogique",          url:"https://moty31700.github.io/fiche-masken/",         cat:"cours",  ico:"📋"},
+  {name:"Targoum Mishpatim",    desc:"Tous les modèles JS",        url:"https://moty31700.github.io/targoum-mishpatim/",    cat:"autres", ico:"⚙️"},
+  {name:"Drill Hébreu",         desc:"Exercices drill",            url:"https://moty31700.github.io/Hebreu-drill/",         cat:"autres", ico:"🔁"},
+  {name:"Hébreu — Accueil",     desc:"Page principale",            url:"https://moty31700.github.io/Hebreu/",               cat:"autres", ico:"🏠"},
+  // ── 3 nouveaux jeux ───────────────────────────────────────────────────────
+  {name:"עברית — Jeu bilingue", desc:"Jeu de vocabulaire hébreu",  url:"https://moty31700.github.io/heb_game_v2/",          cat:"jeux",   ico:"🔤", isNew:true},
+  {name:"עברית — 120 Mots",     desc:"120 mots · Jeu bilingue",    url:"https://moty31700.github.io/jeu_hebreu_120mots/",   cat:"jeux",   ico:"💬", isNew:true},
+  {name:"ISRIM — משחק עברית",   desc:"Jeu hébreu ISRIM",           url:"https://moty31700.github.io/isrim_jeu_hebreu/",     cat:"jeux",   ico:"✡️", isNew:true},
 ];
 
 let cat = 'all', sel = -1;
 
 function filtered() {
   const q = document.getElementById('search').value.toLowerCase();
-  return DATA.map((r,i) => ({...r, i})).filter(r =>
+  return DATA.map((r,i) => ({...r,i})).filter(r =>
     (cat === 'all' || r.cat === cat) &&
     (!q || (r.name + r.desc).toLowerCase().includes(q))
   );
