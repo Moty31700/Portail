@@ -117,7 +117,7 @@ html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(-
     <div id="frame-area">
       <div id="placeholder">
         <div class="ph-letter">א</div>
-        <p class="ph-text">Sélectionnez une ressource dans le sommaire</p>
+        <p class="ph-text">Cliquez sur une ressource : elle s’ouvre dans un nouvel onglet</p>
         <span class="ph-hint" id="total2"></span>
       </div>
       <iframe id="viewer" title="Ressource hébreu" allowfullscreen
@@ -210,13 +210,14 @@ function render() {
         <div class="item-desc">${r.desc}</div>
       </div>
       ${r.isNew ? '<span class="item-new">Nouveau</span>' : ''}
-      <span class="item-arrow">${r.ext ? '↗' : '›'}</span>
+      <span class="item-arrow">↗</span>
     </div>`).join('');
 }
 
 function openRes(i) {
   const r = DATA[i];
-  if (r.ext) { window.open(r.url, '_blank', 'noopener'); return; }
+  window.open(r.url, '_blank', 'noopener');
+  sel = i; render(); closeSidebar(); return;
   sel = i;
   document.getElementById('placeholder').style.display = 'none';
   const fr = document.getElementById('viewer');
